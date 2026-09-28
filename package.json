@@ -1,0 +1,30 @@
+{
+  "name": "nodejs-starter",
+  "version": "1.0.0",
+  "author": "Jan André Greschner",
+  "private": true,
+  "license": "MIT",
+  "description": "A simple Node.js template",
+  "type": "module",
+  "engines": {
+    "node": ">=26"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch --env-file-if-exists=.env src/index.js",
+    "test": "node --test",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "check": "npm run lint && npm run format:check && npm test",
+    "docker:push": "docker buildx build --platform linux/amd64,linux/arm64 -t \"${REGISTRY:?Set REGISTRY, e.g. REGISTRY=registry.example.com}/$npm_package_name:$npm_package_version\" -t \"$REGISTRY/$npm_package_name:latest\" --push ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.9"
+  }
+}

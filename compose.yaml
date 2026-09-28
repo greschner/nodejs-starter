@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    image: ${IMAGE:-nodejs-starter}
+    init: true
+    env_file:
+      - path: .env
+        required: false
